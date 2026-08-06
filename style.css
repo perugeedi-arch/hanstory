@@ -11,9 +11,45 @@
     --border-color: #EAEAEA;
     --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
     --shadow-hover: 0 8px 30px rgba(168, 32, 26, 0.08);
-    --radius-sm: 8px;
+    --radius-sm: 5px;
     --radius-md: 16px;
     --radius-lg: 24px;
+}
+
+/* ===== LOGO & STEMPEL FIX ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-seal {
+    width: 38px;
+    height: 38px;
+    background-color: var(--china-red); 
+    color: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    font-size: 13px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important; 
+    letter-spacing: -1px;            
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logo-text span {
+    color: var(--china-red);
 }
 
 /* ===== BASE STYLES ===== */

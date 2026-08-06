@@ -47,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var controlBox = document.createElement("div");
     controlBox.className = "reading-controls";
     controlBox.innerHTML = 
-        '<button id="togglePinyin" class="btn-control active">拼 Pinyin: ON</button>' +
-        '<button id="toggleTrans" class="btn-control active">文 Arti: ON</button>' +
+        '<button id="togglePinyin" class="btn-control active">拼 Pinyin: OFF</button>' +
+        '<button id="toggleTrans" class="btn-control active">文 Arti: OFF</button>' +
         '<span class="audio-tip">💡 Klik kalimat untuk dengar suara</span>';
     
     if (chapterHeader) {
@@ -105,3 +105,7 @@ function playAudio(text) {
         window.speechSynthesis.speak(utterance);
     }
 }
+
+// Tambahkan 2 baris ini di bagian paling bawah DOMContentLoaded:
+    document.body.classList.add("hide-pinyin");
+    document.body.classList.add("hide-trans");

@@ -3,34 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第二章——她是谁？ | Web Reader</title>
-    <!-- CSS Utama & Reader -->
+    <title>第二章 - 我不知道她的名字 | HanStory</title>
+
     <link rel="stylesheet" href="cerita.css">
     <link rel="stylesheet" href="reader.css">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link CSS Khusus Reader -->
+    <link rel="stylesheet" href="reader.css">
 </head>
-<body class="reader-mode">
+<body>
 
-    <!-- Header / Navbar Reader -->
-    <header class="reader-header">
-        <div class="reader-nav">
-            <a href="index.html" class="back-link">← Kembali</a>
-            <span class="story-title-mini">序章 —— 梦</span>
-        </div>
+    <!-- Bar Aksen Atas -->
+    <div class="top-accent-bar"></div>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-seal zh-text">故事</div>
+                <div class="logo-text">Han<span>Story</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cerita.html" class="active">Cerita</a></li>
+                <li><a href="#">Tentang</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Konten Utama Reader -->
+    <!-- Navigation Breadcrumb / Kembali -->
+    <div class="reader-nav-bar">
+        <a href="detail-cerita.html" class="back-link">← Kembali ke Detail Cerita</a>
+    </div>
+
+    <!-- Area Utama Pembaca Cerita -->
     <main class="reader-container">
         
+        <!-- Header Chapter -->
         <header class="chapter-header">
-            <p class="chapter-number">chapter 2 — Rahasia</p>
-            <h1 class="chapter-title zh-text">第二章 —— 她是谁？</h1>
+            <h1 class="chapter-title zh-text">第二她是谁？</h1>
+            <p class="chapter-subtitle">chapter 2 — who is she?</p>
         </header>
 
-        <!-- Tempat Konten Teks Cerita -->
+        <!-- Garis Pemisah -->
+        <hr class="reader-divider">
+
+       <!-- Tempat Konten Teks Cerita -->
         <article class="story-content">
             <p>文俊坐在床上。</p>
             <p>他还在想刚才的梦。</p>
@@ -86,19 +109,33 @@
             <p>“真的。”</p>
             <p>他真的不知道。</p>
             <p>可是……</p>
-            <p> groundwater他还是画着她。</p>
+            <p>他还是画着她。</p>
         </article>
 
-        <!-- Navigation Bottom -->
-        <div class="chapter-navigation">
-            <a href="sesi1.html" class="nav-btn prev">← Chapter 1</a>
-            <a href="index.html" class="nav-btn list">Daftar Isi</a>
-            <a href="sesi3.html" class="nav-btn next ">Chapter 3 →</a>
-        </div>
+        <!-- Garis Pemisah Bawah -->
+        <hr class="reader-divider">
+
+        <!-- Tombol Navigasi Bab (Sebelumnya / Selanjutnya) -->
+        <nav class="chapter-navigation">
+             <a href="sesi1.html" class="btn-nav next">← Bab Sebelumnya</a>
+            <a href="detail-cerita.html" class="btn-nav">Daftar Bab</a>
+            <a href="sesi3.html" class="btn-nav next">Bab Selanjutnya →</a>
+        </nav>
 
     </main>
 
-    <!-- Script Khusus Chapter 2 -->
-    <script src="story2.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-seal zh-text">印</div>
+            <p>&copy; 2026 HanStory. Platform Baca Cerita Mandarin.</p>
+        </div>
+    </footer>
+
+    <!-- Panggil file JavaScript eksternal -->
+    <script src="story.js"></script>
+</body>
+</html>
+
 </body>
 </html>
