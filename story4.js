@@ -1,10 +1,6 @@
 // Data Pinyin & Arti per paragraf untuk Sesi 4 (广播里的短信)
 const extraData = [
     { 
-        ruby: "<ruby>第四章<rt>dì-sì zhāng</rt></ruby>——<ruby>广播<rt>guǎngbō</rt></ruby><ruby>里<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>短信<rt>duǎnxìn</rt></ruby>", 
-        trans: "Bab 4 — Pesan Singkat di Radio" 
-    },
-    { 
         ruby: "<ruby>放学<rt>fàngxué</rt></ruby><ruby>以后<rt>yǐhòu</rt></ruby>。", 
         trans: "Setelah pulang sekolah." 
     },
@@ -166,21 +162,25 @@ const extraData = [
     }
 ];
 
+// Logic Utama Pemutar & Render
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Buat Toolbar Kontrol Toggle
+    // 1. Sembunyikan Pinyin & Arti secara default
+    document.body.classList.add("hide-pinyin", "hide-trans");
+
+    // 2. Buat Toolbar Kontrol Toggle
     var chapterHeader = document.querySelector(".chapter-header");
     var controlBox = document.createElement("div");
     controlBox.className = "reading-controls";
     controlBox.innerHTML = 
-        '<button id="togglePinyin" class="btn-control active">拼 Pinyin: OFF</button>' +
-        '<button id="toggleTrans" class="btn-control active">文 Arti: OFF</button>' +
+        '<button id="togglePinyin" class="btn-control">拼 Pinyin: OFF</button>' +
+        '<button id="toggleTrans" class="btn-control">文 Arti: OFF</button>' +
         '<span class="audio-tip">💡 Klik kalimat untuk dengar suara</span>';
     
     if (chapterHeader) {
         chapterHeader.after(controlBox);
     }
 
-    // 2. Format Paragraf Cerita & Pasang Event Suara
+    // 3. Format Paragraf Cerita & Pasang Event Suara
     var paragraphs = document.querySelectorAll(".story-content p:not(.scene-break)");
     paragraphs.forEach(function (p, index) {
         if (extraData[index]) {
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 3. Logic Toggle Pinyin
+    // 4. Logic Toggle Pinyin
     var btnPinyin = document.getElementById("togglePinyin");
     if (btnPinyin) {
         btnPinyin.onclick = function () {
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // 4. Logic Toggle Arti / Terjemahan
+    // 5. Logic Toggle Arti / Terjemahan
     var btnTrans = document.getElementById("toggleTrans");
     if (btnTrans) {
         btnTrans.onclick = function () {
@@ -220,17 +220,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Pemutar Suara
+// Pemutar Suara Kompatibel HP & Laptop
 function playAudio(text) {
     if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
         var utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "zh-CN";
         utterance.rate = 0.85;
+
+        var voices = window.speechSynthesis.getVoices();
+        var zhVoice = voices.find(function(voice) {
+            return voice.lang.includes("zh") || voice.lang.includes("Chinese");
+        });
+
+        if (zhVoice) utterance.voice = zhVoice;
+
         window.speechSynthesis.speak(utterance);
     }
 }
 
-// Tambahkan 2 baris ini di bagian paling bawah DOMContentLoaded:
-    document.body.classList.add("hide-pinyin");
-    document.body.classList.add("hide-trans");
+if ("speechSynthesis" in window) {
+    window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+    };
+}
